@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 
-bool greater(std::string s1, std::string s2){
+bool greater(const std::string& s1, const std::string& s2){
     if (s1.length() > s2.length() || s1 == s2) return true;
     if (s1.length() < s2.length()) return false;
     for (int i = 0; i < s1.length(); ++i){
@@ -33,7 +33,7 @@ std::string subtract(const std::string& s1, const std::string& s2){
     return ans;
 }
 
-std::string add(const std::string s1, const std::string s2){
+std::string add(const std::string& s1, const std::string& s2){
     if (s1[0] == '-' && s2[0] == '-') return add(std::string(s1.begin() + 1, s1.end()), std::string(s2.begin() + 1, s2.end()));
     if (s1[0] == '-') return subtract(s2, std::string(s1.begin() + 1, s1.end()));
     if (s2[0] == '-') return subtract(s1, std::string(s2.begin() + 1, s2.end()));
@@ -53,7 +53,7 @@ std::string add(const std::string s1, const std::string s2){
     return total;
 }
 
-std::string multiply(std::string s1, std::string s2){
+std::string multiply(std::string& s1, std::string& s2){
     if (s1 == "0" || s2 == "0") return "0";
     if (s1[0] == '-' && s2[0] == '-') return multiply(std::string(s1.begin() + 1, s1.end()), std::string(s2.begin() + 1, s2.end()));
     if (s1[0] == '-') return '-' + multiply(std::string(s1.begin() + 1, s1.end()), s2);
